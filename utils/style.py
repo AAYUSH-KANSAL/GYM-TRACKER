@@ -22,10 +22,20 @@ def apply_custom_styles():
             display: none !important;
         }
 
-        /* Hide Streamlit branding components */
+        /* Hide Streamlit branding components while keeping the header area (needed for mobile menu) */
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
-        header {visibility: hidden;}
+        
+        /* Ensure the header is transparent so it doesn't clash, but keep it for the hamburger menu */
+        header[data-testid="stHeader"] {
+            background-color: rgba(0,0,0,0);
+            border-bottom: none;
+        }
+        
+        /* Hide the 'Deploy' button and other clutter in the header */
+        .stDeployButton {
+            display: none;
+        }
 
         /* Premium Buttons */
         .stButton>button {
